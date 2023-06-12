@@ -9,6 +9,12 @@ questions = [
     {
         type: 'input',
         message: 'What color would you like your logo to be?',
+        validate: (answer) => {
+            if (validateColor(answer) == false){
+                return "Please enter a valid color."
+            }
+            return true;
+        },
         name: 'color'
     }, 
     {
@@ -20,6 +26,13 @@ questions = [
     {
         type: 'input', 
         message: 'What text would you like in your logo?',
+        validate: (answer) => {
+            if (answer.length > 3){
+                return "Logo text can be up to 3 characters in length."
+            }
+            return true;
+            
+        },
         name: 'text'
     }
 ]
