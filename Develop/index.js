@@ -1,7 +1,9 @@
 //Import libraries
 const inquirer = require('inquirer');
-const validateColor = require('./utils/validate.js')
-const Logo = require('./utils/logo.js')
+const fs = require('fs');
+const validateColor = require('./utils/validate.js');
+const {Circle, Triangle, Square} = require('./utils/shapes.js');
+
 
 questions = [
     {
@@ -32,17 +34,31 @@ inquirer
         if (validateColor(answers.color) == false){
             throw new Error(`Please enter a valid color.`)
         }
-        
-        const logo = new Logo(answers.color, answers.shape, answers.text)
-        console.log(logo)   
-        // logo.generateLogo
-
+        // sees what shape the user made and creats that object
+        switch (answers.shape){
+            case 'triangle':
+                shape = new Triangle(answers.color, answers.text);
+                break;
+            case 'square':
+                shape = new Square(answers.color, answers.text);
+                break;
+            case 'circle':
+                shape = new Circle(answers.color, answers.text);
+                break
+        }
+        console.log(shape.render())
+        // run fucniton that makes an svg file and 
+        fs.writeFile('./output/logo.svg', shape.render(), (err) => {
+            (err) ? console.error : console.log("SVG file Created! Check the output folder")
+        })
 
     })
     .catch((err) => (err) ? console.error(err) : console.log('No errors caught'))
 
 
    
+
+
 
 
 
