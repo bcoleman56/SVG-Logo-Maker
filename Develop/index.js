@@ -59,7 +59,6 @@ inquirer
                 shape = new Circle(answers.color, answers.text);
                 break
         }
-        console.log(shape.render())
         // run fucniton that makes an svg file and 
         fs.writeFile('./output/logo.svg', shape.render(), (err) => {
             (err) ? console.error : console.log("SVG file Created! Check the output folder")
