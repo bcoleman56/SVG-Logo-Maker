@@ -1,7 +1,7 @@
 
 const colorList = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'brown', 'white', 'black']
 
-const regex = /[0-9a-z]+/i;
+const regex = /[0-9a-f]+/i;
 
 const validateColor = (color) => {
     if(colorList.includes(color)){
@@ -10,7 +10,7 @@ const validateColor = (color) => {
         // could be hex color with #
         for (let i = 1; i < color.length; i++){
             if(!color[i].match(regex)){
-                console.log(`This ${color[i]} is not hexidecimal or in the color list`)
+                console.log(`This is not hexidecimal or in the color list`)
                 return false
             }
         }
