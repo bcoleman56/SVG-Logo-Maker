@@ -24,7 +24,11 @@ To install the app you must clone the repository.
 
 After cloning the repository and installing the neccessary packages you run the command node index.js and answer the prompts.
 
+
 [Watch video demonstration](https://drive.google.com/file/d/1J_er4tooIrjFxVC6-cZeuK-Y5fkzAMHS/view?usp=drive_link)
+
+
+![Example Svg Logo](./Assets/example.svg)
 
 ## Credits
 
