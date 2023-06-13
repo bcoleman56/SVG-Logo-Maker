@@ -11,11 +11,11 @@ questions = [
         message: 'What color would you like your logo to be?',
         validate: (answer) => {
             if (validateColor(answer) == false){
-                return "Please enter a valid color."
+                return "Please enter a 'keyword' or 'hexidecimal."
             }
             return true;
         },
-        name: 'color'
+        name: 'shapeColor'
     }, 
     {
         type: 'list',
@@ -34,29 +34,33 @@ questions = [
             
         },
         name: 'text'
+    },
+    {
+        type: 'input',
+        message: 'What color text?',
+        validate: (answer) => {
+            if (validateColor(answer) == false){
+                return "Please enter a 'keyword' or 'hexidecimal."
+            }
+            return true;
+        },
+        name: 'textColor'
     }
 ]
 
 inquirer
     .prompt(questions)
     .then((answers) => {
-        // validate inputs
-        if (answers.text.length > 3){
-            throw new Error(`Logo text can be up to 3 characters in length.`)
-        }
-        if (validateColor(answers.color) == false){
-            throw new Error(`Please enter a valid color.`)
-        }
         // sees what shape the user made and creats that object
         switch (answers.shape){
             case 'triangle':
-                shape = new Triangle(answers.color, answers.text);
+                shape = new Triangle(answers.shapeColor, answers.text, answers.textColor);
                 break;
             case 'square':
-                shape = new Square(answers.color, answers.text);
+                shape = new Square(answers.shapeColor, answers.text, answers.textColor);
                 break;
             case 'circle':
-                shape = new Circle(answers.color, answers.text);
+                shape = new Circle(answers.shapeColor, answers.text, answers.textColor);
                 break
         }
         // run fucniton that makes an svg file and 
